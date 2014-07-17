@@ -25,9 +25,9 @@ if [ ! -f "${runfile}" ]; then
         --mode unattended \
         --installer-language en \
         --railopass $railoPassword \
-        --installiis no > /dev/null 2> /dev/null
+        --installiis no > /dev/null
 
-    service railo_ctl stop > /dev/null 2> /dev/null
+    service railo_ctl stop > /dev/null
 
     echo "Configuring Railo ..."
 
@@ -36,7 +36,7 @@ if [ ! -f "${runfile}" ]; then
     sed -e "s/localhost/$publicIp/g" /vagrant/.vagrant/railo-config/server.xml > temp
     mv temp /opt/railo/tomcat/conf/server.xml
 
-    service railo_ctl start > /dev/null 2> /dev/null
+    service railo_ctl start > /dev/null
 
     echo "Setting Railo Admin password ..."
     curl -s -d "new_password=${railoPassword}&new_password_re=${railoPassword}&lang=en&rememberMe=s&submit=submit" \
@@ -47,6 +47,6 @@ if [ ! -f "${runfile}" ]; then
 
 fi
 
-service apache2 restart > /dev/null 2> /dev/null
+service apache2 restart > /dev/null
 
 touch "${runfile}"

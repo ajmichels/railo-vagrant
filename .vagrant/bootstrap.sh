@@ -18,7 +18,7 @@ if [ ! -f "${runfile}" ]; then
         unzip \
         curl \
         apache2 \
-        mysql-server mysql-client > /dev/null 2> /dev/null
+        mysql-server mysql-client > /dev/null
 
     echo "Configuring Apache ..."
 
